@@ -23,8 +23,8 @@ Beta – Functional, but may require adjustments for different authentication fl
 1. Clone the repository:
 
    ```bash
-   git clone <your-repo-url>
-   cd <your-repo>
+   git clone https://github.com/lucasmbarboza/rpa-rentention-meraki
+   cd rpa-rentention-meraki
    ```
 
 2. Install dependencies using the requirements file:
