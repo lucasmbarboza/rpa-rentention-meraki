@@ -1,52 +1,75 @@
-# Meraki Camera Retention RPA
+# Meraki Camera Retention Automation
 
-Este projeto é um RPA (Robotic Process Automation) em Python para automatizar a coleta de informações de retenção de vídeo de câmeras Meraki em múltiplas organizações, utilizando a API Meraki e automação web com Selenium.
+This project automates the collection of video retention information from Meraki cameras across multiple organizations, using the Meraki API and web automation with Selenium. The goal is to facilitate audits and management of video retention policies, centralizing the data in a CSV file.
 
-## Funcionalidades
-- Autenticação automática no dashboard web da Meraki (com suporte a 2FA manual).
-- Coleta de todas as organizações e câmeras do dashboard via API.
-- Abertura automática das páginas de configuração de retenção de cada câmera.
-- Extração e registro dos dias de retenção de vídeo de cada câmera.
-- Armazenamento dos dados em um arquivo CSV (`camera_retention.csv`).
-- Logging detalhado de todas as etapas e erros.
+## Use Case
 
-## Requisitos
+Automates the login process, camera inventory collection, and extraction of retention days configured on each Meraki MV device. Ideal for IT teams that need to monitor and document video retention policies in corporate environments.
+
+## Technology Stack
+
 - Python 3.8+
-- Google Chrome instalado
-- ChromeDriver compatível com sua versão do Chrome
-
-### Bibliotecas Python
-- selenium
-- meraki
+- Selenium WebDriver
+- Meraki Python SDK
 - python-dotenv
+- Google Chrome + ChromeDriver
 
-Instale as dependências com:
-```bash
-pip install selenium meraki python-dotenv
+## Status
+
+Beta – Functional, but may require adjustments for different authentication flows or changes in the Meraki dashboard.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <your-repo-url>
+   cd <your-repo>
+   ```
+
+2. Install dependencies using the requirements file:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Make sure you have Google Chrome installed and a compatible ChromeDriver in your PATH.
+
+## Configuration
+
+Create a `.env` file in the project root with the following variables:
+
+```env
+MERAKI_API_KEY=YOUR_API_KEY
+MERAKI_USERNAME=your@email.com
+MERAKI_PASSWORD=your_password
 ```
 
-## Configuração
-1. Crie um arquivo `.env` na raiz do projeto com as variáveis:
-   ```env
-   MERAKI_API_KEY=SEU_API_KEY
-   MERAKI_USERNAME=seu@email.com
-   MERAKI_PASSWORD=sua_senha
-   ```
-2. Certifique-se de que o `chromedriver` está no PATH ou na mesma pasta do script.
+## Usage
 
-## Uso
-Execute o script principal:
+Run the main script:
+
 ```bash
 python rpa.py
 ```
 
-Durante a execução, se houver autenticação em duas etapas (2FA), siga as instruções no terminal.
+During execution, follow the terminal instructions for authentication (including 2FA, if necessary).
 
-Os resultados serão salvos em `camera_retention.csv` com as colunas: organização, nome da câmera, serial e dias de retenção.
+Results will be saved in `camera_retention.csv` with the columns: organization, camera name, serial, and retention days.
 
-## Observações
-- O script foi projetado para uso interno e pode precisar de ajustes para diferentes ambientes ou versões do dashboard Meraki.
-- O login web pode exigir adaptações caso o fluxo de autenticação da Meraki mude.
+## Known Issues
 
-## Licença
-Este projeto é fornecido sem garantia e para fins educacionais/demonstrativos.
+- The login flow may change as the Meraki dashboard is updated.
+- The script requires manual intervention for 2FA authentication.
+
+## Getting help
+
+Open an issue in this repository for questions or problems.
+
+## Getting involved
+
+Contributions are welcome! See the [CONTRIBUTING.md](./CONTRIBUTING.md) file for details.
+
+## License
+
+This code is licensed under the BSD 3-Clause License. See [LICENSE.txt](./LICENSE.txt) for details.

@@ -2,3 +2,4 @@
 .env
 *.log
 *.csv
+MERAKI_TEMPLATE_README.md
