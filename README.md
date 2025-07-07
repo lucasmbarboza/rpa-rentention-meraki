@@ -72,4 +72,4 @@ Contributions are welcome! See the [CONTRIBUTING.md](./CONTRIBUTING.md) file for
 
 ## License
 
-This code is licensed under the BSD 3-Clause License. See [LICENSE.txt](./LICENSE.txt) for details.
+This code is licensed under the MIT License. See [LICENSE.txt](./LICENSE.txt) for details.
