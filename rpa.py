@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 dotenv.load_dotenv()
 
-dashboard = meraki.DashboardAPI()
+dashboard = meraki.DashboardAPI(api_key=os.getenv("MERAKI_API_KEY"))
 driver = webdriver.Chrome()
 
 # List to store organization IDs
@@ -42,15 +42,15 @@ def login_meraki_webpage(username, password):
     # Wait for the next page to load
     # Cisco Meraki login page elements
     #! Comment this part of the (bellow try-except) code if you are not using a cisco e-mail (ex.: lucas@cisco.com)
-    try:
-        signin_personal_button = driver.find_element(
-            By.XPATH, "//button[normalize-space(text())='Sign in to personal account']")
-        signin_personal_button.click()
+    # try:
+    #     signin_personal_button = driver.find_element(
+    #         By.XPATH, "//button[normalize-space(text())='Sign in to personal account']")
+    #     signin_personal_button.click()
 
-    except Exception as e:
-        logging.error(
-            f"Error finding elements on the Cisco Meraki login page: {e}")
-        return
+    # except Exception as e:
+    #     logging.error(
+    #         f"Error finding elements on the Cisco Meraki login page: {e}")
+    #     return
 
     # Second page: Insert password info
     try:
@@ -133,9 +133,21 @@ def main():
                     f"Camera {serial} retention days: {retention_days}")
             except Exception as e:
                 retention_days = None
-                append_on_file(serial, retention_days)
+                # append_on_file(serial, retention_days)
                 logging.error(
-                    f"Error fetching retention days for camera {serial}: {e}")
+                    f"Error fetching retention days for camera {serial}: {e} by using class retaentionDays")
+
+            if retention_days is None:
+                try:
+                    retention_days = driver.find_element(
+                        By.CLASS_NAME, "bigNumber").text
+                    logging.info(
+                        f"Camera {serial} retention days: {retention_days}")
+                except Exception as e:
+                    retention_days = None
+                    logging.error(
+                        f"Error fetching retention days for camera {serial}: {e} by using class bigNumber")
+
             if retention_days is not None:
                 append_on_file(
                     info_cam[serial]['ORG'], info_cam[serial]['name'], serial, retention_days)
