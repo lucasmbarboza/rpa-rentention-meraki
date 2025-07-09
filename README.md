@@ -12,7 +12,6 @@ Automates the login process, camera inventory collection, and extraction of rete
 - Selenium WebDriver
 - Meraki Python SDK
 - python-dotenv
-- Google Chrome + ChromeDriver
 
 ## Status
 
