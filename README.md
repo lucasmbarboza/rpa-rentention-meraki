@@ -69,6 +69,8 @@ Open an issue in this repository for questions or problems.
 
 Contributions are welcome! See the [CONTRIBUTING.md](./CONTRIBUTING.md) file for details.
 
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/lucasmbarboza/rpa-rentention-meraki)
+[![Run in Cisco Cloud IDE](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-runable-icon.svg)](https://developer.cisco.com/codeexchange/devenv/lucasmbarboza/rpa-rentention-meraki/)
 ## License
 
 This code is licensed under the MIT License. See [LICENSE.txt](./LICENSE.txt) for details.
